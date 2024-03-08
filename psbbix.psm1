@@ -234,7 +234,7 @@ Function Get-ZabbixSession {
     param ()
 	
     if (!($global:zabSession -and $global:zabSessionParams)) {
-        write-host "`nDisconnected form Zabbix Server!`n" -f red; return
+        write-host "`nDisconnected from Zabbix Server!`n" -f red; return
     }
     elseif ($global:zabSession -and $global:zabSessionParams -and !($ZabbixVersion=Get-ZabbixVersion)) {
 		write-host "`nZabbix session params are OK (use -verbose for details). Check whether Zabbix Server is online. In case of certificate error try new powershell session.`n" -f red; write-verbose "$($zabSession | select *)"; return	
@@ -242,7 +242,7 @@ Function Get-ZabbixSession {
 	elseif ($global:zabSession -and $global:zabSessionParams -and ($ZabbixVersion=Get-ZabbixVersion)) {
 		$zabSession | select *, @{n="ZabbixVer";e={$ZabbixVersion}}
     }
-	else {write-host "`nDisconnected form Zabbix Server!`n" -f red; return}
+	else {write-host "`nDisconnected from Zabbix Server!`n" -f red; return}
 }
 
 Function Remove-ZabbixSession {
